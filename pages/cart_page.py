@@ -12,14 +12,41 @@ class CartPage(BasePage):
         self.product_price = page.locator(".inventory_item_price")
         self.checkout_btn = page.locator("#checkout")
 
-    def get_qty(self):
-        return self.get_text(self.quantity)
 
+    def validate_cart_products(
+            self,
+            expected_name,
+            expected_price,
+            expected_qty):
+
+        actual_name = self.get_text(self.product_name)
+        actual_price = self.get_text(self.product_price)
+        actual_quantity = self.get_text(self.quantity)
+
+        assert actual_name == expected_name, (
+            f"Expected name '{expected_name}'"
+            f"but got: '{actual_name}'"
+        )
+
+        assert actual_price == expected_price, (
+            f"Expected price '{expected_price}'"
+            f"but got: '{actual_price}'"
+        )
+
+        assert actual_quantity == expected_qty, (
+            f"Expected quantity '{expected_qty}'"
+            f"but got: '{actual_quantity}'"
+        )
+    """
     def get_name(self):
         return self.get_text(self.product_name)
 
     def get_price(self):
         return self.get_text(self.product_price)
+
+    def actual_quantity(self):
+        return self.get_text(self.quantity)
+    """
 
     def go_to_checkout(self):
         self.click(self.checkout_btn)

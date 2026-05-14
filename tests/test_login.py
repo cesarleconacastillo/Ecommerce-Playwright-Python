@@ -20,13 +20,11 @@ def test_login(page, login_data, product_data, cart_data, checkout_data):
     #Cart
     cart_page = products.click_cart_icon()
 
-    expected_qty = cart_data["cart"]["quantity"]
     expected_name = cart_data["cart"]["name"]
     expected_price = cart_data["cart"]["price"]
+    expected_quantity = cart_data["cart"]["quantity"]
 
-    assert cart_page.get_qty() == expected_qty
-    assert cart_page.get_name() == expected_name
-    assert cart_page.get_price() == expected_price
+    cart_page.validate_cart_products(expected_name, expected_price, expected_quantity)
 
     # Checkout
     checkout_page = cart_page.go_to_checkout()
@@ -39,8 +37,9 @@ def test_login(page, login_data, product_data, cart_data, checkout_data):
     checkout_page.confirm_checkout()
 
     confirmation_msg = checkout_page.order_placed()
-    expected_conf_msg = checkout_data["checkout"]["conf_msg"]
-    assert confirmation_msg == expected_conf_msg
+    expected_confirm_msg = checkout_data["checkout"]["conf_msg"]
+    checkout_page.validate_order_placed(expected_confirm_msg)
+    #assert confirmation_msg == expected_conf_msg
 
 
 

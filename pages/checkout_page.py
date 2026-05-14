@@ -26,3 +26,17 @@ class CheckoutPage(BasePage):
 
     def order_placed(self):
         return self.get_text(self.confirmation_msg)
+
+    def validate_order_placed(
+            self,
+            expected_confirm_msg
+        ):
+
+        actual_message = self.get_text(self.confirmation_msg)
+
+        assert expected_confirm_msg == actual_message, (
+            f"Expected message '{expected_confirm_msg}'"
+            f"but got: '{actual_message}'"
+        )
+
+
