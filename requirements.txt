@@ -3,3 +3,4 @@ pytest-html
 pytest-playwright
 pytest-xdist
 playwright
+pytest-check

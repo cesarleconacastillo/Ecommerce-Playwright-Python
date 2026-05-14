@@ -1,0 +1,83 @@
+# Playwright + Python Automation Framework
+# =========================
+# Virtual Environments
+# =========================
+.venv/
+venv/
+env/
+
+# =========================
+# Python Cache / Compiled
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Pytest
+# =========================
+.pytest_cache/
+.cache/
+
+# =========================
+# Playwright
+# =========================
+playwright-report/
+test-results/
+
+# =========================
+# Reports / Artifacts
+# =========================
+reports/
+screenshots/
+traces/
+allure-results/
+allure-report/
+
+# =========================
+# Coverage Reports
+# =========================
+htmlcov/
+.coverage
+coverage.xml
+
+# =========================
+# IDEs
+# =========================
+.idea/
+.vscode/
+
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Environment Variables / Secrets
+# =========================
+.env
+.env.*
+
+# =========================
+# Build / Distribution
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Node (future-proof if you add JS tooling)
+# =========================
+node_modules/
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.swp
