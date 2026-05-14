@@ -13,11 +13,9 @@ def test_login(page, login_data, product_data, cart_data, checkout_data):
     username = login_data["valid_user"]["username"]
     password = login_data["valid_user"]["password"]
     products = login_page.login(username, password)
-    # Products
-    product_list = products.get_products_list()
+
     product_name = product_data["product"]["name"]
-    result = products.add_product_in_cart(product_name, product_list)
-    print(result)
+    products.add_product_in_cart(product_name)
 
     #Cart
     cart_page = products.click_cart_icon()
