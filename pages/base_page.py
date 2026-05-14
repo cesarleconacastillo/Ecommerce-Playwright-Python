@@ -7,16 +7,13 @@ class BasePage:
     def goto(self, url):
         self.page.goto(url)
 
-    def click(self, selector):
-        self.page.locator(selector).click()
+    def click(self, locator):
+        locator.click()
 
-    def fill(self, selector, value):
-        self.page.locator(selector).fill(value)
+    def fill(self, locator, value):
+        locator.fill(value)
 
-    def list_locator(self, selector):
-        return self.page.locator(selector)
-
-    def get_text(self, selector):
-        return self.page.locator(selector).text_content()
+    def get_text(self, locator):
+        return locator.text_content()
 
 

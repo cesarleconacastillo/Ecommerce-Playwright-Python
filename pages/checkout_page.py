@@ -1,4 +1,3 @@
-from constants.checkout_selectors import CheckoutSelectors
 from pages.base_page import BasePage
 
 
@@ -7,16 +6,23 @@ class CheckoutPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
 
+        self.checkout_first_name = page.locator("#first-name")
+        self.checkout_last_name = page.locator("#last-name")
+        self.checkout_zip = page.locator("#postal-code")
+        self.continue_button = page.locator("#continue")
+        self.finish_button = page.locator("#finish")
+        self.confirmation_msg = page.locator(".complete-header")
+
     def fill_data(self, first_name, last_name, zip_code):
-        self.page.fill(CheckoutSelectors.CHECKOUT_FIRST_NAME, first_name)
-        self.page.fill(CheckoutSelectors.CHECKOUT_LAST_NAME, last_name)
-        self.page.fill(CheckoutSelectors.CHECKOUT_ZIP, zip_code)
+        self.fill(self.checkout_first_name, first_name)
+        self.fill(self.checkout_last_name, last_name)
+        self.fill(self.checkout_zip, zip_code)
 
     def click_continue(self):
-        self.page.click(CheckoutSelectors.CONTINUE_BTN)
+        self.click(self.continue_button)
 
     def confirm_checkout(self):
-        self.page.click(CheckoutSelectors.FINISH_BTN)
+        self.click(self.finish_button)
 
     def order_placed(self):
-        return self.get_text(CheckoutSelectors.CONFIRMATION_MSG)
+        return self.get_text(self.confirmation_msg)
